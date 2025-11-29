@@ -1,0 +1,15 @@
+azure-ai-ml
+azure-identity
+azureml-core
+azure-storage-blob
+numpy
+pandas
+scikit-image
+scikit-learn
+matplotlib
+pyarrow
+fastparquet
+deap
+xgboost
+lightgbm
+joblib
