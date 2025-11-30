@@ -1,0 +1,17 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: extract_features_component
+version: 1
+type: command
+inputs:
+  input_data:
+    type: uri_folder
+    description: Input folder containing raw tumor images (Bronze layer data asset)
+outputs:
+  output_data:
+    type: uri_folder
+    description: Output folder containing the extracted features saved as a Parquet file
+code: .
+command: python extract_features.py --input_data ${{inputs.input_data}} --output_data ${{outputs.output_data}}
+environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu@latest
+display_name: Extract Features Component
+description: Extracts GLCM texture features from MRI brain images using multiple filters and multiprocessing. Applies entropy, gaussian, sobel, gabor, hessian, and prewitt filters, then computes GLCM properties (contrast, dissimilarity, homogeneity, ASM, energy, correlation) at 0°, 45°, 90°, and 135° angles.
